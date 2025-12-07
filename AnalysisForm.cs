@@ -33,12 +33,12 @@ namespace IndeksBranz
 
         public enum Kategorie
         {
-            PKD = 0, 
+            PKD = 0,
             NAZWA_PKD = 1,
             Data = 2,
             Liczba_jednostek_gospodarczych = 3,
             Liczba_rentownych_jednostek_gospodarczych = 4,
-            Przychody_netto = 5, 
+            Przychody_netto = 5,
             Zysk_netto = 6,
             Sprzedaz = 7,
             Koszty = 8,
@@ -46,25 +46,25 @@ namespace IndeksBranz
             Naklady_inwestycyjne = 10,
             Srodki_pieniezne_pap_wart = 11,
             Zobowiazania_dlugoterminowe = 12,
-            Zobowiazania_krotkoterminowe =13,
-            Krotko_terminowe_kredyty_bankowe=14,
-            Dlugo_terminowe_kredyty_bankowe=15,
-            Zapasy=16,
-            Dynamika_liczba_jednostek_gospodarczych=17,
-            Dynamika_liczba_rentownych_jednostek_gospodarczych=18,
-            Dynamika_przychody_netto=19,
-            Dynamika_zysk_netto=20,
-            Dynamika_sprzedaz=21,
-            Dynamika_koszty=22, 
-            Dynamika_odsetki=23,
-            Dynamika_naklady_inwestycyjne=24,
-            Dynamika_zobowiazania_krotkoterminowe=25,
-            Dynamika_zobowiazania_dlugoterminowe=26,
-            Dynamika_srodki_pieniezne_pap_wart=27,
-            Dynamika_krotko_terminowe_kredyty_bankowe=28,
-            Dynamika_dlugo_terminowe_kredyty_bankowe=29,
-            Dynamika_zapasy=30,
-            Dynamika_rentownosc_sprzedazy=31
+            Zobowiazania_krotkoterminowe = 13,
+            Krotko_terminowe_kredyty_bankowe = 14,
+            Dlugo_terminowe_kredyty_bankowe = 15,
+            Zapasy = 16,
+            Dynamika_liczba_jednostek_gospodarczych = 17,
+            Dynamika_liczba_rentownych_jednostek_gospodarczych = 18,
+            Dynamika_przychody_netto = 19,
+            Dynamika_zysk_netto = 20,
+            Dynamika_sprzedaz = 21,
+            Dynamika_koszty = 22,
+            Dynamika_odsetki = 23,
+            Dynamika_naklady_inwestycyjne = 24,
+            Dynamika_zobowiazania_krotkoterminowe = 25,
+            Dynamika_zobowiazania_dlugoterminowe = 26,
+            Dynamika_srodki_pieniezne_pap_wart = 27,
+            Dynamika_krotko_terminowe_kredyty_bankowe = 28,
+            Dynamika_dlugo_terminowe_kredyty_bankowe = 29,
+            Dynamika_zapasy = 30,
+            Dynamika_rentownosc_sprzedazy = 31
         }
 
 
@@ -111,16 +111,16 @@ namespace IndeksBranz
 
         private void LoadDataToPointChart()
         {
-            
-            
+
+
 
             WykresPunktowy1.Plot.Clear();
             SetupPointChart();
-            if (Year_ComboBox.SelectedItem != null&&ParamFinansowy1_ComboBox.SelectedItem!=null&&
-                PKD1_ComboBox.SelectedItem!=null&& PKD2_ComboBox.SelectedItem!=null)
+            if (Year_ComboBox.SelectedItem != null && ParamFinansowy1_ComboBox.SelectedItem != null &&
+                PKD1_ComboBox.SelectedItem != null && PKD2_ComboBox.SelectedItem != null)
             {
 
-                WykresPunktowy1.Plot.XLabel(ParamFinansowy1_ComboBox.SelectedItem.ToString().Trim('"')+"[%]");
+                WykresPunktowy1.Plot.XLabel(ParamFinansowy1_ComboBox.SelectedItem.ToString().Trim('"') + "[%]");
                 WykresPunktowy1.Plot.YLabel(ParamFinansowy2_ComboBox.SelectedItem.ToString().Trim('"') + "[%]");
 
                 List<double> PKD1_x = new List<double>();
@@ -137,9 +137,9 @@ namespace IndeksBranz
                 {
                     var parts = line.Split(';');
 
-                    if (parts[(int)Kategorie.Data] == Year_ComboBox.SelectedItem.ToString()&& parts[(int)Kategorie.NAZWA_PKD] == PKD1_ComboBox.SelectedItem.ToString())
+                    if (parts[(int)Kategorie.Data] == Year_ComboBox.SelectedItem.ToString() && parts[(int)Kategorie.NAZWA_PKD] == PKD1_ComboBox.SelectedItem.ToString())
                     {
-                        PKD1_x.Add(double.Parse(parts[ParamFinansowy1_ComboBox.SelectedIndex+17]));
+                        PKD1_x.Add(double.Parse(parts[ParamFinansowy1_ComboBox.SelectedIndex + 17]));
                         PKD1_y.Add(double.Parse(parts[ParamFinansowy2_ComboBox.SelectedIndex + 17]));
                         plot_X_max = PKD1_x[0];
                         plot_X_min = PKD1_x[0];
@@ -152,13 +152,13 @@ namespace IndeksBranz
                         PKD2_x.Add(double.Parse(parts[ParamFinansowy1_ComboBox.SelectedIndex + 17]));
                         PKD2_y.Add(double.Parse(parts[ParamFinansowy2_ComboBox.SelectedIndex + 17]));
 
-                        if(PKD2_x[0] > plot_X_max)
+                        if (PKD2_x[0] > plot_X_max)
                         {
                             plot_X_max = PKD2_x[0];
                         }
-                        if (PKD2_x[0]<plot_X_min)
+                        if (PKD2_x[0] < plot_X_min)
                         {
-                            plot_X_min=PKD2_x[0];
+                            plot_X_min = PKD2_x[0];
                         }
                         if (PKD2_y[0] > plot_Y_max)
                         {
@@ -184,7 +184,7 @@ namespace IndeksBranz
                         }
                         if (OGOL_y[0] > plot_Y_max)
                         {
-                            plot_Y_max =OGOL_y[0];
+                            plot_Y_max = OGOL_y[0];
                         }
                         if (OGOL_y[0] < plot_Y_min)
                         {
@@ -242,7 +242,7 @@ namespace IndeksBranz
                 double absY = Math.Abs(plot_Y_max) + Math.Abs(plot_Y_min);
 
 
-                WykresPunktowy1.Plot.Axes.SetLimits(-100,100, -100,100);  //Przeskalowanie wykresu.
+                WykresPunktowy1.Plot.Axes.SetLimits(-100, 100, -100, 100);  //Przeskalowanie wykresu.
 
                 WykresPunktowy1.Plot.Axes.AutoScale();
 
@@ -292,7 +292,7 @@ namespace IndeksBranz
             for (int i = 3; i < headers.Length; i++)
             {
                 if (Regex.IsMatch(headers[i].Trim('"'), pattern))
-                { 
+                {
                     Dynamiki_Headers_List.Add(headers[i]);
                 }
                 else
@@ -321,14 +321,14 @@ namespace IndeksBranz
 
         public void SetPKD_NaturalLanguage(int PKD)
         {
-            MessageBox.Show(PKD.ToString());
+            
             var lines = File.ReadAllLines(DataFilePath);
             List<string> Years_List = new List<string>();
             foreach (var line in lines.Skip(1))
             {
 
                 var parts = line.Split(';');
-                if (parts[0].Trim('"')==PKD.ToString())
+                if (parts[0].Trim('"') == PKD.ToString())
                 {
                     PKD_NaturalLanguage = parts[1];
                     MessageBox.Show(PKD_NaturalLanguage);
@@ -356,7 +356,7 @@ namespace IndeksBranz
 
             WykresLiniowy1.Plot.Clear();
             SetupLinearChart();
-            if (ParamFinansowy3_ComboBox.SelectedItem != null && PKD1_ComboBox.SelectedItem != null 
+            if (ParamFinansowy3_ComboBox.SelectedItem != null && PKD1_ComboBox.SelectedItem != null
                 && PKD2_ComboBox.SelectedItem != null)
             {
                 string patern = ".*Liczba.*";
@@ -463,23 +463,23 @@ namespace IndeksBranz
             WykresKolumnowy1.Series.Clear();
 
 
-            
 
 
 
 
-            if (PKD_NaturalLanguage!=null && PKD1_ComboBox.SelectedItem!=null && PKD2_ComboBox.SelectedItem!=null)
+
+            if (PKD_NaturalLanguage != null && PKD1_ComboBox.SelectedItem != null && PKD2_ComboBox.SelectedItem != null)
             {
                 WykresKolumnowy1.Series.Clear();
                 WykresKolumnowy1.Titles.Add("Suma punktów");
                 var lines = File.ReadAllLines(DataFilePath2);
                 double[] xs = { 1, 2, 3 }; // kategorie lub indeksy słupków
                 string[] categories = { PKD_NaturalLanguage, PKD1_ComboBox.SelectedItem.ToString().Trim('"'), PKD2_ComboBox.SelectedItem.ToString().Trim('"') };
-                
+
                 var part = lines[0].Split(';');
 
                 Series s1 = WykresKolumnowy1.Series.Add(part[31].Trim('"'));
-               
+
                 s1.ChartType = SeriesChartType.StackedColumn;
 
 
@@ -494,24 +494,24 @@ namespace IndeksBranz
                     var parts = line.Split(';');
                     if (parts[0].Trim('"') == PKD_NaturalLanguage.Trim('"'))
                     {
-                        MessageBox.Show("1 if");
-                        s1.Points.AddXY(0, double.Parse(parts[31].Trim('"')));
                         
+                        s1.Points.AddXY(0, double.Parse(parts[31].Trim('"')));
+
 
                     }
 
                     if (parts[0].Trim('"') == PKD1_ComboBox.SelectedItem.ToString().Trim('"'))
                     {
-                        
+
                         s1.Points.AddXY(1, double.Parse(parts[31].Trim('"')));
-                        
+
                     }
 
                     if (parts[0].Trim('"') == PKD2_ComboBox.SelectedItem.ToString().Trim('"'))
                     {
 
                         s1.Points.AddXY(2, double.Parse(parts[31].Trim('"')));
-                        
+
 
                     }
 
@@ -519,11 +519,13 @@ namespace IndeksBranz
 
                 }
 
-                
+
             }
         }
 
-
-
+        private void AnalysisForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }
