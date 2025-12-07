@@ -21,7 +21,7 @@ namespace IndeksBranz
         private void StartAnalysis_Button_Click(object sender, EventArgs e)
         {
             InsertPKDNumForm InsertPKDForm = new InsertPKDNumForm();
-            this.Hide();
+            this.Close();
             InsertPKDForm.ShowDialog();
         }
 

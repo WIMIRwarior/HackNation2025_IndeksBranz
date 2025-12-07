@@ -490,6 +490,7 @@ namespace IndeksBranz
 
                 foreach (var line in lines.Skip(1))
                 {
+
                     var parts = line.Split(';');
                     if (parts[0].Trim('"') == PKD_NaturalLanguage.Trim('"'))
                     {
